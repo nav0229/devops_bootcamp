@@ -1,21 +1,49 @@
 pipeline {
     agent any
-
+    environment {
+    BRANCH_ENV = "test"
+        }
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+		stage ("Build") {
+			when {
+				anyOf {
+					changeRequest target: "test";
+					changeRequest target: "uat";
+					changeRequest target: "rel_1.0";
+					branch "test";
+					branch "uat"
+					branch "rel_1.0"
+				}
+			}
+			stages {
+				stage("Fetch Environment Branches") {
+					when {
+						branch "test";
+						branch "uat"
+						branch "rel_1.0"
+					}
+					steps {
+						sh '''
+							git config --add remote.origin.fetch +refs/heads/${BRANCH_ENV}:refs/remotes/origin/${BRANCH_ENV}
+							git fetch --no-tags
+						'''
+					}
+				}
+
+        
     }
+}
+
+	stage("Find delta") {
+					steps {
+						sh "rm -Rf diff"
+						sh "git clone https://github.com/nav0229/diff.git"
+						dir ("diff") {
+						sh "npm link"}
+						sh "npm install -g diff"
+						sh "sfpackage test rel_1.0 -p 55 ./Deploy/"
+						
+						}
+}
+}
 }
