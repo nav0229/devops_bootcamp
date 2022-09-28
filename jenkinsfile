@@ -62,8 +62,8 @@ pipeline {
 	stage("JWT Auth + Validate") {
 					steps {
 						
-						tryLogout()
-						//withCredentials([sshUserPrivateKey(credentialsId: SERVER_KEY, keyFileVariable: "JWT_KEY_FILE")]) 
+						\\tryLogout()
+						\\withCredentials([sshUserPrivateKey(credentialsId: SERVER_KEY, keyFileVariable: "JWT_KEY_FILE")]) 
 						{
 						sh '''
 						sfdx version
