@@ -53,16 +53,15 @@ pipeline {
 
 	stage("Find delta") {
 					steps {
-						//sh "rm -Rf sf-packager"
-						//sh "git clone https://github.com/dlively1/sf-packager.git"
-						//dir ("sf-packager") 
-						//{
-						//sh "npm link"}
+						sh "rm -Rf sf-packager"
+						sh "git clone https://github.com/dlively1/sf-packager.git"
+						dir ("sf-packager") {
+						sh "npm link"}
 						//sh "npm install commander -g"
 						//sh "git checkout test"
 						sh "git checkout rel_1.0"
 						//sh "sfpackage test rel_1.0 -p 55 ./Deploy/"
-						//}
+						}
 }
 	stage("JWT Auth + Validate") {
 					steps {			
