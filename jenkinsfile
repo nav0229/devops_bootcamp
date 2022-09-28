@@ -66,7 +66,7 @@ pipeline {
 						sfdx auth:jwt:grant --clientid 3MVG9SM6_sNwRXqv87fhnI9wtafC.ppK3YSLiD.Ccf55M9wRk1ks54KUGfVYPKsQoNCNfGEuMbU15hPRXgGV4 --jwtkeyfile C:/certificate/new-cert/server.key --username navdeep.singh@salesforce.com.csgdevops.ndev2 --instanceurl https://csg-devops-bootcamp--ndev2.sandbox.my.salesforce.com
 						
 						'''
-						}						}
+						}						
 }
 
 }
