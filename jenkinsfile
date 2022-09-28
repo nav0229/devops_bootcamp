@@ -53,12 +53,13 @@ pipeline {
 
 	stage("Find delta") {
 					steps {
-						sh "rm -Rf sf-packager"
-						sh "git clone https://github.com/dlively1/sf-packager.git"
-						dir ("sf-packager") {
-						sh "npm link"}
-						sh "npm install commander -g"
-						sh "git checkout test"
+						//sh "rm -Rf sf-packager"
+						//sh "git clone https://github.com/dlively1/sf-packager.git"
+						//dir ("sf-packager") 
+						{
+						//sh "npm link"}
+						//sh "npm install commander -g"
+						//sh "git checkout test"
 						sh "git checkout rel_1.0"
 						//sh "sfpackage test rel_1.0 -p 55 ./Deploy/"
 						}
@@ -67,7 +68,7 @@ pipeline {
 					steps {			
 						sh '''
 						sfdx version
-						sfdx auth:jwt:grant --clientid ${CLIENT_ID} --jwtkeyfile ${JWT_KEY} --username ${USER_NAME} ---instanceurl ${SANDBOX_URL}
+						sfdx auth:jwt:grant --clientid ${CLIENT_ID} --jwtkeyfile ${JWT_KEY} --username ${USER_NAME} --instanceurl ${SANDBOX_URL}
 						//sfdx auth:jwt:grant --clientid 3MVG9SM6_sNwRXqv87fhnI9wtafC.ppK3YSLiD.Ccf55M9wRk1ks54KUGfVYPKsQoNCNfGEuMbU15hPRXgGV4 --jwtkeyfile C/certificate/new-cert/server.key --username navdeep.singh@salesforce.com.csgdevops.ndev2 --instanceurl https://csg-devops-bootcamp--ndev2.sandbox.my.salesforce.com
 						
 						'''
