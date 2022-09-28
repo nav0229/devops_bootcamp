@@ -7,8 +7,12 @@ pipeline {
     		 GIT_CREDENTIALS_ID="d318b3e0-d03b-40d1-a98f-d13fbdc3a0f5"
 		 NODE_EXTRA_CA_CERTS=""
 		 SERVER_KEY="dxserverkey1"
+		 CLIENT_ID="3MVG9SM6_sNwRXqv87fhnI9wtafC.ppK3YSLiD.Ccf55M9wRk1ks54KUGfVYPKsQoNCNfGEuMbU15hPRXgGV4"
+		 JWT_KEY="C/certificate/new-cert/server.key"
+		 USER_NAME="navdeep.singh@salesforce.com.csgdevops.ndev2"
 		 GIT_URL="https://github.com/nav0229/devops_bootcamp.git"
 		 SFDX_AUDIENCE_URL="https://test.salesforce.com"
+		 SANDBOX_URL="https://csg-devops-bootcamp--ndev2.sandbox.my.salesforce.com"
 
       		  }
 		  
@@ -63,7 +67,8 @@ pipeline {
 					steps {			
 						sh '''
 						sfdx version
-						sfdx auth:jwt:grant --clientid 3MVG9SM6_sNwRXqv87fhnI9wtafC.ppK3YSLiD.Ccf55M9wRk1ks54KUGfVYPKsQoNCNfGEuMbU15hPRXgGV4 --jwtkeyfile C:/certificate/new-cert/server.key --username navdeep.singh@salesforce.com.csgdevops.ndev2 --instanceurl https://csg-devops-bootcamp--ndev2.sandbox.my.salesforce.com
+						sfdx auth:jwt:grant --clientid ${CLIENT_ID} --jwtkeyfile ${JWT_KEY} --username ${USER_NAME} ---instanceurl ${SANDBOX_URL}
+						//sfdx auth:jwt:grant --clientid 3MVG9SM6_sNwRXqv87fhnI9wtafC.ppK3YSLiD.Ccf55M9wRk1ks54KUGfVYPKsQoNCNfGEuMbU15hPRXgGV4 --jwtkeyfile C/certificate/new-cert/server.key --username navdeep.singh@salesforce.com.csgdevops.ndev2 --instanceurl https://csg-devops-bootcamp--ndev2.sandbox.my.salesforce.com
 						
 						'''
 						}						
