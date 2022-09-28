@@ -49,7 +49,7 @@ pipeline {
 					steps {
 						sh "rm -Rf diff"
 						sh "git clone https://github.com/dlively1/sf-packager.git"
-						dir ("diff") {
+						dir ("sf-packager") {
 						sh "npm link"}
 						sh " git checkout uat"
 						sh " git checkout rel_1.0"
