@@ -52,7 +52,7 @@ pipeline {
 						dir ("sf-packager") {
 						sh "npm link"}
 						sh "npm install commander -g"
-						sh " npm install commander --save"
+						sh "export PATH=$PATH:/c/Softwares/sf-packager"
 						sh " git checkout test"
 						sh " git checkout rel_1.0"
 						sh "sfpackage test rel_1.0 -p 55 ./Deploy/"
