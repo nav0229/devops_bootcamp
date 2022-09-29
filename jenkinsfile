@@ -1,8 +1,6 @@
 pipeline {
     
-     agent {
-    docker { image 'test/testimage:619c95b' }
-  }
+     agent any 
     environment 
     		{
    		 BRANCH_ENV = "test"
