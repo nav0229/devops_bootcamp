@@ -1,6 +1,8 @@
 pipeline {
     
-     agent any 
+    agent {
+        docker { image 'jfgarcia268/vlocity_sfdx:core' }
+    } 
     environment 
     		{
    		 BRANCH_ENV = "test"
