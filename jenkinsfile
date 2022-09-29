@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    {
+    agent {
+        docker {
+            image 'jfgarcia268/vlocity_sfdx:core'
+                }
+    	}
     environment 
     		{
    		 BRANCH_ENV = "test"
@@ -13,7 +18,7 @@ pipeline {
 		 GIT_URL="https://github.com/nav0229/devops_bootcamp.git"
 		 SFDX_AUDIENCE_URL="https://test.salesforce.com"
 		 SANDBOX_URL="https://csg-devops-bootcamp--ndev2.sandbox.my.salesforce.com"
-
+		 BRANCH_ENV="uat"
       		  }
 		  
 
