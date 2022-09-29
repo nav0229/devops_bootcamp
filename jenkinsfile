@@ -1,8 +1,8 @@
 pipeline {
-    {
+    
     agent {
         docker {
-            image jfgarcia268/vlocity_sfdx:core
+            image {jfgarcia268/vlocity_sfdx:core}
                 }
     	}
     environment 
